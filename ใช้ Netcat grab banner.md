@@ -26,6 +26,8 @@ Host: google.co.th
 
 > เราจะได้ HTTP Response กลับมา
 
+### ตัวอย่างการใช้งาน
+
 ![Screenshot 2024-05-29 140909](https://github.com/Atiwitch15101/Netcat/assets/159407312/fe7d71ec-8d9e-450b-ab87-f631de7fff02)
 
 > [!NOTE]
