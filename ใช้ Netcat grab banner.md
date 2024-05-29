@@ -53,7 +53,7 @@ nc -lvp 10000
 
 > นั่นคือเราจะรัน server รอรับ message ที่ port 10000 นั่นเอง
 
-## Client (ฝั่งที่ต้องการส่ง message คำว่า “message” ไปยังปลายทาง)
+### Client (ฝั่งที่ต้องการส่ง message คำว่า “message” ไปยังปลายทาง)
 
 > ที่ฝั่ง Client รันคำสั่งเป็น
 
@@ -71,3 +71,37 @@ message
 ![Screenshot 2024-05-29 142748](https://github.com/Atiwitch15101/Netcat/assets/159407312/0c683c03-1948-4623-a29d-8a95c1606cfe)
 
 ![Screenshot 2024-05-29 143614](https://github.com/Atiwitch15101/Netcat/assets/159407312/43bfde72-4c2d-4e6e-9b88-4e949574efdb)
+
+## Netcat รับ-ส่ง File
+
+> เราสามารถใช้ netcat ในการรับ-ส่ง file ใดๆก็ได้ผ่าน nc เช่น
+
+## Server: (192.168.1.1)
+
+> ที่ฝั่ง Server รันคำสั่งเป็น
+
+```
+nc -lvp 10000
+```
+
+หรือ
+
+```
+nc -lvp 10000 > out.txt
+```
+
+> นั่นคือเราจะรัน server รอรับ message ที่ port 10000 นั่นเอง
+
+### Client (ฝั่งที่ต้องการส่ง File ไปยังปลายทาง)
+
+> ที่ฝั่ง Client รันคำสั่งเป็น
+
+```
+cat <file> | nc 192.168.1.1 10000
+```
+
+> เมื่อเสร็จแล้ว server ปลายทางจะได้รับ <file> มา หรือหากใช้ > ก็จะกลายเป็น save ลงไฟล์ out.txt นั่นเอง
+
+
+
+
